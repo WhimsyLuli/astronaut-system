@@ -657,6 +657,77 @@ int main() {
             agencia.carregar(nome);
         } else if (comando == "RELATORIO") {
             agencia.relatorio();
+        } else if (comando == "MENU") {
+            int op;
+            do {
+                cout << "========== MENU ==========" << endl;
+                cout << "1) Cadastrar astronauta" << endl;
+                cout << "2) Cadastrar voo" << endl;
+                cout << "3) Adicionar astronauta ao voo" << endl;
+                cout << "4) Remover astronauta do voo" << endl;
+                cout << "5) Lancar voo" << endl;
+                cout << "6) Finalizar voo" << endl;
+                cout << "7) Explodir voo" << endl;
+                cout << "8) Relatorio" << endl;
+                cout << "0) Sair" << endl;
+                cout << "==========================" << endl;
+                cout << "opcao: ";
+                if (!(cin >> op)) {
+                    break;
+                }
+                if (op == 1) {
+                    cout << "cpf: ";
+                    string cpf;
+                    cin >> cpf;
+                    cout << "idade: ";
+                    int idade;
+                    cin >> idade;
+                    cout << "nome: ";
+                    string nome;
+                    getline(cin >> ws, nome);
+                    agencia.cadastrarAstronauta(cpf, nome, idade);
+                } else if (op == 2) {
+                    cout << "codigo: ";
+                    int codigo;
+                    cin >> codigo;
+                    agencia.cadastrarVoo(codigo);
+                } else if (op == 3) {
+                    cout << "cpf: ";
+                    string cpf;
+                    cin >> cpf;
+                    cout << "codigo: ";
+                    int codigo;
+                    cin >> codigo;
+                    agencia.adicionarAstronauta(cpf, codigo);
+                } else if (op == 4) {
+                    cout << "cpf: ";
+                    string cpf;
+                    cin >> cpf;
+                    cout << "codigo: ";
+                    int codigo;
+                    cin >> codigo;
+                    agencia.removerAstronauta(cpf, codigo);
+                } else if (op == 5) {
+                    cout << "codigo: ";
+                    int codigo;
+                    cin >> codigo;
+                    agencia.lancarVoo(codigo);
+                } else if (op == 6) {
+                    cout << "codigo: ";
+                    int codigo;
+                    cin >> codigo;
+                    agencia.finalizarVoo(codigo);
+                } else if (op == 7) {
+                    cout << "codigo: ";
+                    int codigo;
+                    cin >> codigo;
+                    agencia.explodirVoo(codigo);
+                } else if (op == 8) {
+                    agencia.relatorio();
+                } else if (op != 0) {
+                    cout << "opcao invalida" << endl;
+                }
+            } while (op != 0);
         } else {
             cout << "ERRO: comando desconhecido " << comando << endl;
         }
